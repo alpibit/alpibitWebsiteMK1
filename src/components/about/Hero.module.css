@@ -1,0 +1,17 @@
+.heroWrap {
+  height: 100vh;
+  background-color: #eef1ef;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #3a4443;
+}
+
+.heroPhoto {
+  max-width: 150px;
+}
+
+.heroHeader {
+  padding: 15px;
+}

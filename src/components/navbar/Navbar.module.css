@@ -1,0 +1,19 @@
+header {
+  background: #3a4443;
+  color: #ffffff;
+  min-height: 60px;
+  overflow: hidden;
+  position: fixed;
+  left: 0;
+  right: 0;
+}
+
+nav {
+  float: right;
+  padding-top: 22px;
+}
+
+li {
+  display: inline;
+  padding: 0 20px 0 20px;
+}
