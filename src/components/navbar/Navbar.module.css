@@ -19,3 +19,22 @@
   color: #fff;
 }
 
+.listElement:hover {
+  color: #ffbb6e;
+}
+
+@media only screen and (max-width: 768px) {
+  .wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .listElement {
+    padding: 0 10px 0 10px;
+  }
+  .navWrap {
+    float: none;
+    padding-top: 0;
+  }
+}

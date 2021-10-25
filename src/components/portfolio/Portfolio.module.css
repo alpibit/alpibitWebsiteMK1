@@ -2,8 +2,14 @@
   height: 100vh;
   background-color: #eef1ef;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.header {
+  font-size: 40px;
+  color: #3a4443;
 }
 
 .portfolioWrap {
@@ -23,10 +29,76 @@
   font-size: 25px;
 }
 
-.weatherApp, .makeupWeb, .garageWeb {
+.weatherApp,
+.makeupWeb,
+.garageWeb {
   width: 320px;
   height: 320px;
-  margin:20px;
-  border: 3px solid #3a4443;
-  border-radius: 50%;  
+  margin: 20px;
+  border: 1px solid #3a4443;
+  cursor: pointer;
+  transition-duration: 0.3s;
+  /* border-radius: 50%;   */
+}
+
+.weatherApp:hover,
+.makeupWeb:hover,
+.garageWeb:hover {
+  filter: grayscale(100%);
+  filter:brightness(70%)
+}
+
+@media only screen and (max-width: 1100px){
+  .weatherApp,
+  .makeupWeb,
+  .garageWeb {
+    width: 270px;
+    height: 270px;
+    margin: 20px;
+}
+}
+
+@media only screen and (max-width: 900px){
+  .weatherApp,
+  .makeupWeb,
+  .garageWeb {
+    width: 220px;
+    height: 220px;
+    margin: 10px;
+}
+}
+
+@media only screen and (max-width: 768px) {
+
+  .header {
+    margin-top: 50px;
+    font-size: 30px;
+    color: #3a4443;
+  }
+  .portfolioWrap {
+    height: 100vh;
+    width: 100vw;
+    flex-direction: column;
+  }
+
+  .weatherApp,
+  .makeupWeb,
+  .garageWeb {
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+  }
+  .project {
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  
+  .weatherApp,
+  .makeupWeb,
+  .garageWeb {
+    width: 150px;
+    height: 100px;
+  }
 }

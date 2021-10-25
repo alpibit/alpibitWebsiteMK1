@@ -37,6 +37,7 @@ const Contact = () => {
           name="contactform"
           method="post"
           onSubmit={formHandler}
+          action={`https://formsubmit.co/${config.EMAIL}`} 
           className={styles.contactForm}
         >
           <h1 className={styles.contactheader}>Contact form</h1>

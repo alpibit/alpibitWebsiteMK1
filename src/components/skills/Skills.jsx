@@ -13,6 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Skills = () => {
   return (
     <section className={styles.wrap} id="skills">
+      <h1 className={styles.header}>Tools I use</h1>
       <div className={styles.skillWrap}>
         <div className={styles.skills}>
           <FontAwesomeIcon icon={faHtml5} size="2x" />
