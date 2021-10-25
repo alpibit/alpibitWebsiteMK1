@@ -1,4 +1,32 @@
 .wrap {
   height: 100vh;
   background-color: #eef1ef;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.portfolioWrap {
+  height: 70vh;
+  width: 80vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+}
+
+.weatherApp, .makeupWeb, .garageWeb {
+  width: 320px;
+  height: 320px;
+  margin:20px;
+  border: 3px solid #3a4443;
+  border-radius: 50%;  
 }

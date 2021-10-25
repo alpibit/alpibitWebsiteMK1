@@ -1,4 +1,37 @@
 .wrap {
-    height: 100vh;
-    background-color:#FFBB6E;
+  height: 100vh;
+  background-color: #ffbb6e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
+
+.skillWrap {
+    height: 70vh;
+    width: 70vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center; 
+    font-size: 30px;
+    
+}
+
+.skills {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color:#3A4443;
+}
+
+.skills:hover{
+    color:#000;
+    transition-duration: 0.3s;
+}
+
+.icon{
+    font-size: 30px;
+}
+
+
