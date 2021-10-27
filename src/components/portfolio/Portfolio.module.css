@@ -1,6 +1,6 @@
 .wrap {
   height: 100vh;
-  background-color: #eef1ef;
+  background-color: #474747;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,7 +9,7 @@
 
 .header {
   font-size: 40px;
-  color: #3a4443;
+  color: #eef1ef;
 }
 
 .portfolioWrap {
@@ -22,11 +22,19 @@
 }
 
 .project {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  text-decoration: none;
+  position: relative;
+  text-align: center;
+  transition-duration: 0.4s;
+}
+
+.description {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-size: 25px;
+  color: #eef1ef;
 }
 
 .weatherApp,
@@ -35,41 +43,40 @@
   width: 320px;
   height: 320px;
   margin: 20px;
-  border: 1px solid #3a4443;
   cursor: pointer;
-  transition-duration: 0.3s;
-  /* border-radius: 50%;   */
+  filter: opacity(50%);
+  filter: brightness(15%);
 }
 
-.weatherApp:hover,
-.makeupWeb:hover,
-.garageWeb:hover {
-  filter: grayscale(100%);
-  filter:brightness(70%)
+.project:hover {
+  filter: brightness(400%);
 }
 
-@media only screen and (max-width: 1100px){
+.project:hover .description {
+  display: none;
+}
+
+@media only screen and (max-width: 1100px) {
   .weatherApp,
   .makeupWeb,
   .garageWeb {
     width: 270px;
     height: 270px;
     margin: 20px;
-}
+  }
 }
 
-@media only screen and (max-width: 900px){
+@media only screen and (max-width: 900px) {
   .weatherApp,
   .makeupWeb,
   .garageWeb {
     width: 220px;
     height: 220px;
     margin: 10px;
-}
+  }
 }
 
 @media only screen and (max-width: 768px) {
-
   .header {
     margin-top: 50px;
     font-size: 30px;
@@ -88,13 +95,12 @@
     height: 150px;
     margin: 10px;
   }
-  .project {
+  .description {
     font-size: 15px;
   }
 }
 
 @media only screen and (max-width: 400px) {
-  
   .weatherApp,
   .makeupWeb,
   .garageWeb {

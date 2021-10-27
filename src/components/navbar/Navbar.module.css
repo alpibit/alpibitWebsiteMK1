@@ -6,6 +6,7 @@
   left: 0;
   right: 0;
   cursor: alias;
+  z-index: 1;
 }
 
 .navWrap {

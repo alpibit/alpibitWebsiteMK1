@@ -12,6 +12,10 @@
   max-width: 150px;
 }
 
+.heroPhotoLoading{
+  max-width: 75px;
+}
+
 .heroHeader {
   padding: 15px;
 }
