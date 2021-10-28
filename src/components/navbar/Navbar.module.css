@@ -1,27 +1,37 @@
 .wrap {
   background: #3a4443;
-  min-height: 60px;
+  min-height: 59px;
   overflow: hidden;
   position: fixed;
   left: 0;
   right: 0;
   cursor: alias;
   z-index: 1;
+  filter: opacity(80%);
+  transition-duration: 0.3s;
+  animation-name: photoControl;
+  animation-duration: 4s;
+}
+.wrap:hover {
+  filter: opacity(100%);
 }
 
 .navWrap {
   float: right;
-  padding-top: 22px;
+  padding-top: 20px;
 }
 
 .listElement {
   display: inline;
-  padding: 0 20px 0 20px;
+  padding: 20px;
   color: #fff;
+  cursor: pointer;
+  transition-duration: 0.3s;
 }
 
 .listElement:hover {
-  color: #ffbb6e;
+  background-color: #ffbb6e;
+  color: black;
 }
 
 @media only screen and (max-width: 768px) {
@@ -30,12 +40,25 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    filter: opacity(100%);
   }
   .listElement {
-    padding: 0 10px 0 10px;
+    padding: 20px 10px;
   }
   .navWrap {
     float: none;
     padding-top: 0;
+  }
+}
+
+@keyframes photoControl {
+  0% {
+    opacity: 0%;
+  }
+  65%{
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
   }
 }

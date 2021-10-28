@@ -1,16 +1,23 @@
-import React from 'react';
+import React, { useState } from "react";
 import styles from "./Hero.module.css";
 import profilePhoto from "../../images/main.png";
 
-const About = () => {
+const Hero = () => {
+  const [mainMessage, setMainMessage] = useState("Hello.");
+  const changeMainMessage = () => {
+    setMainMessage("I'm Aleksandrs Pirags.");
+  };
+  let timer = setInterval(changeMainMessage, 2500);
+
   return (
     <section className={styles.heroWrap} id="hero">
-      <img src={profilePhoto} className={styles.heroPhoto} alt=""/>
-      <h1 className={styles.heroHeader}>I'm Aleksandrs Pirags.</h1>
-      <p className={styles.heroText}>Self-taught front-end junior web developer. 
+      <img src={profilePhoto} className={styles.heroPhoto} alt="" />
+      <h1 className={styles.heroHeader}>{mainMessage}</h1>
+      <p className={styles.heroText}>
+        Self-taught front-end junior web developer.
       </p>
     </section>
   );
 };
 
-export default About;
+export default Hero;
