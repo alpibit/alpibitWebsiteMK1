@@ -29,7 +29,7 @@
 /* CONTACT FORM */
 
 .contactheader {
-  padding-bottom: 20px;
+  margin-bottom: 40px;
   font-size: 35px;
   color: #3a4443;
 }
@@ -62,6 +62,7 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  margin-top: 30px;
 }
 
 

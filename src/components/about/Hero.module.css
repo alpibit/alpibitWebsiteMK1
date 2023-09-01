@@ -15,9 +15,15 @@
   animation-duration: 4s;
 }
 
-.heroText{
+.heroText {
   animation-name: photoControl;
   animation-duration: 4s;
+}
+
+.heroTextL2 {
+  animation-name: photoControl;
+  animation-duration: 4s;
+  margin-top: 5px;
 }
 
 .heroPhotoLoading {
@@ -30,27 +36,34 @@
   animation-name: textControl;
   animation-duration: 4s;
 }
+
 @keyframes textControl {
   0% {
     opacity: 0%;
   }
+
   33% {
     opacity: 100%;
   }
+
   66% {
     opacity: 0%;
   }
+
   100% {
     opacity: 100%;
   }
 }
+
 @keyframes photoControl {
   0% {
     opacity: 0%;
   }
-  65%{
+
+  65% {
     opacity: 0%;
   }
+
   100% {
     opacity: 100%;
   }

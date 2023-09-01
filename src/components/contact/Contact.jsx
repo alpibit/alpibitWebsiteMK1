@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Contact.module.css";
 import { config } from "../../config.js";
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
@@ -6,7 +6,26 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Contact = () => {
-  const formHandler = () => {};
+  const [message, setMessage] = useState(""); // To display messages to the user
+
+  const formHandler = async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+
+    try {
+      const response = await fetch("/runners/sendmail.php", {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await response.text();
+
+      setMessage(result); // Display the result message from the server
+    } catch (error) {
+      setMessage("Error occurred while submitting the form. Please try again.");
+    }
+  };
 
   return (
     <section className={styles.wrap} id="contact">
@@ -37,7 +56,6 @@ const Contact = () => {
           name="contactform"
           method="post"
           onSubmit={formHandler}
-          action={`https://formsubmit.co/${config.EMAIL}`}
           className={styles.contactForm}
         >
           <h1 className={styles.contactheader}>Contact form</h1>
@@ -67,6 +85,7 @@ const Contact = () => {
             className={styles.contactFormSubmit}
           />
         </form>
+        {message && <p>{message}</p>}
       </div>
     </section>
   );

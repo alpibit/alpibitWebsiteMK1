@@ -10,15 +10,18 @@
 .header {
   font-size: 40px;
   color: #eef1ef;
+  margin: 50px 0 80px 0;
+}
+
+.text {
+  font-size: 20px;
+  color: #eef1ef;
+  line-height: 28px;
 }
 
 .portfolioWrap {
-  height: 70vh;
   width: 80vw;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  margin: 100px 0 50px 0;
 }
 
 .project {
@@ -26,53 +29,41 @@
   position: relative;
   text-align: center;
   transition-duration: 0.7s;
+  height: 100%;
 }
 
-.description {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 20px;
-  color: #eef1ef;
+.projectWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: #eef1ef;
+  padding: 0 20px;
+  margin: 0 25px;
+  min-height: 250px;
 }
 
-.weatherApp,
-.makeupWeb,
-.garageWeb {
-  width: 320px;
-  height: 320px;
-  margin: 20px;
-  cursor: pointer;
-  filter: opacity(50%);
-  filter: brightness(15%);
+.projectHeader {
+  font-size: 23px;
+  margin-bottom: 10px !important;
+  color: #3a4443;
+  margin: 0;
 }
 
-.project:hover {
-  filter: brightness(500%);
+.projectBottom {
+  height: 70px;
 }
 
-.project:hover .description {
-  display: none;
+.slickDots{
+  bottom: -50px !important;
 }
 
-@media only screen and (max-width: 1100px) {
-  .weatherApp,
-  .makeupWeb,
-  .garageWeb {
-    width: 270px;
-    height: 270px;
-    margin: 20px;
-  }
+.slickDots li button:before {
+  color: #ffbb6e !important
 }
 
-@media only screen and (max-width: 900px) {
-  .weatherApp,
-  .makeupWeb,
-  .garageWeb {
-    width: 220px;
-    height: 220px;
-    margin: 10px;
+@media only screen and (max-width: 1600px) {
+  .projectWrap {
+    min-height: 300px;
   }
 }
 
@@ -80,31 +71,19 @@
   .header {
     margin-top: 50px;
     font-size: 30px;
-    color: #3a4443;
   }
+
   .portfolioWrap {
     height: 100vh;
-    width: 100vw;
     flex-direction: column;
   }
 
-  .weatherApp,
-  .makeupWeb,
-  .garageWeb {
-    width: 150px;
-    height: 150px;
-    margin: 10px;
+  .text {
+   text-align: center;
+   padding: 0 20px;
   }
+
   .description {
     font-size: 15px;
-  }
-}
-
-@media only screen and (max-width: 400px) {
-  .weatherApp,
-  .makeupWeb,
-  .garageWeb {
-    width: 150px;
-    height: 100px;
   }
 }

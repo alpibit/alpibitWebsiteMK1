@@ -8,6 +8,11 @@
   cursor: default;
 }
 
+.slick-dots {
+  margin-top: 20px !important;
+}
+
+
 /* .wrap {
   display: flex;
   flex-direction: column;

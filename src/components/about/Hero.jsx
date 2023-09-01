@@ -14,7 +14,10 @@ const Hero = () => {
       <img src={profilePhoto} className={styles.heroPhoto} alt="" />
       <h1 className={styles.heroHeader}>{mainMessage}</h1>
       <p className={styles.heroText}>
-        Self-taught front-end junior web developer.
+        Behind the Pixels,
+      </p>
+      <p className={styles.heroTextL2}>
+        Where Web Wonders Take Shape.
       </p>
     </section>
   );

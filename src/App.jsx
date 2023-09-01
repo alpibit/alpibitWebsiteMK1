@@ -6,7 +6,6 @@ import Portfolio from "./components/portfolio/Portfolio";
 import Skills from "./components/skills/Skills";
 
 import styles from "./App.module.css";
-// import LazyLoad from 'react-lazyload';
 
 
 const App = () => {
@@ -17,9 +16,7 @@ const App = () => {
       <div className={styles.wrap}>
         <Hero />
         <Skills />
-        {/* <LazyLoad height={300} offset={100}> */}
         <Portfolio />
-        {/* </LazyLoad> */}
         <Contact />
       </div>
     </main>
