@@ -11,7 +11,7 @@
 .header {
   font-size: 50px;
   color: #3A4443;
-  margin: 40px 0;
+  margin: 80px 0 50px 0;
 }
 
 .skillWrap {
@@ -43,20 +43,26 @@
   font-size: 30px;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   .header {
     font-size: 30px;
   }
 
   .skillWrap {
-    display: flex;
-    flex-direction: column;
+    grid-template-columns: 1fr 1fr;
     font-size: 20px;
   }
 
 
   .skills {
     margin: 25px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .skillWrap {
+    display: flex;
+    flex-direction: column;
   }
 }
 
@@ -68,7 +74,7 @@
 
 @media only screen and (max-width: 400px) {
   .header {
-    font-size: 20px;
+    font-size: 30px;
   }
 
   .skillWrap {
