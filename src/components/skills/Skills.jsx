@@ -10,10 +10,11 @@ import {
   faWordpress,
   faShopify,
   faCodepen,
+  // laravel icon import
+  faLaravel
 } from "@fortawesome/free-brands-svg-icons";
 import JQueryIcon from "../svg/jqueryIcon";
 import WooIcon from "../svg/wooIcon";
-import CSharpIcon from "../svg/csharpIcon";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Skills = () => {
@@ -62,8 +63,8 @@ const Skills = () => {
           <h1>Shopify</h1>
         </div>
         <div className={styles.skills}>
-          <CSharpIcon />
-          <h1>C#/.NET</h1>
+          <FontAwesomeIcon icon={faLaravel} size="2x" />
+          <h1>Laravel</h1>
         </div>
         <div className={styles.skills}>
           <FontAwesomeIcon icon={faCodepen} size="2x" />
