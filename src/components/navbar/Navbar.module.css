@@ -44,6 +44,12 @@
   font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: 1px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.logoText:hover {
+  color: #ffbb6e;
 }
 
 .desktopMenu {
@@ -70,12 +76,12 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: #b15e00;
+  background: #ffbb6e;
   transition: width 0.3s ease;
 }
 
 .listElement:hover {
-  color: #b15e00;
+  color: #ffbb6e;
 }
 
 .listElement:hover::after {
@@ -93,7 +99,7 @@
 }
 
 .mobileMenuButton:hover {
-  color: #b15e00;
+  color: #ffbb6e;
 }
 
 .mobileMenu {

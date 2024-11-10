@@ -1,40 +1,114 @@
 .heroWrap {
-  height: 100vh;
-  background-color: #eef1ef;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #eef1ef 0%, #e6e9e7 100%);
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   color: #3a4443;
+  position: relative;
+  overflow: hidden;
+}
+
+.backgroundElements {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.circle {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: rgba(177, 94, 0, 0.07);
+  animation: bouncingCircle 30s linear infinite;
+}
+
+.square {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: rgba(58, 68, 67, 0.07);
+  transform: rotate(45deg);
+  animation: bouncingSquare 25s linear infinite;
+}
+
+.contentWrapper {
+  max-width: 1200px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  z-index: 1;
+}
+
+.photoContainer {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  animation-name: photoControl;
+  animation-duration: 4s;
 }
 
 .heroPhoto {
-  opacity: 100%;
-  max-width: 150px;
-  animation-name: photoControl;
-  animation-duration: 4s;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform 1s ease;
 }
 
-.heroText {
-  animation-name: photoControl;
-  animation-duration: 4s;
+.photoContainer:hover .heroPhoto {
+  transform: scale(1.1);
 }
 
-.heroTextL2 {
-  animation-name: photoControl;
-  animation-duration: 4s;
-  margin-top: 5px;
+.photoOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle, transparent 50%, rgba(177, 94, 0, 0.1) 100%);
+  pointer-events: none;
 }
 
-.heroPhotoLoading {
-  max-width: 75px;
+.textContainer {
+  text-align: center;
 }
 
 .heroHeader {
-  padding: 15px;
-  opacity: 100%;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
   animation-name: textControl;
   animation-duration: 4s;
+}
+
+.heroText,
+.heroTextL2 {
+  font-size: 1.15rem;
+  line-height: 1.4;
+  margin: 0.5rem 0;
+  animation-name: photoControl;
+  animation-duration: 4s;
+}
+
+@keyframes photoControl {
+  0% {
+    opacity: 0%;
+  }
+
+  65% {
+    opacity: 0%;
+  }
+
+  100% {
+    opacity: 100%;
+  }
 }
 
 @keyframes textControl {
@@ -55,16 +129,108 @@
   }
 }
 
-@keyframes photoControl {
+@keyframes bouncingCircle {
   0% {
-    opacity: 0%;
+    top: 15%;
+    left: 10%;
+    transform: rotate(0deg);
   }
 
-  65% {
-    opacity: 0%;
+  25% {
+    top: 70%;
+    left: 80%;
+    transform: rotate(90deg);
+  }
+
+  50% {
+    top: 20%;
+    left: 75%;
+    transform: rotate(180deg);
+  }
+
+  75% {
+    top: 65%;
+    left: 15%;
+    transform: rotate(270deg);
   }
 
   100% {
-    opacity: 100%;
+    top: 15%;
+    left: 10%;
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bouncingSquare {
+  0% {
+    top: 65%;
+    right: 15%;
+    transform: rotate(45deg);
+  }
+
+  25% {
+    top: 20%;
+    right: 75%;
+    transform: rotate(135deg);
+  }
+
+  50% {
+    top: 70%;
+    right: 80%;
+    transform: rotate(225deg);
+  }
+
+  75% {
+    top: 15%;
+    right: 10%;
+    transform: rotate(315deg);
+  }
+
+  100% {
+    top: 65%;
+    right: 15%;
+    transform: rotate(405deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .heroHeader {
+    font-size: 1.75rem;
+  }
+
+  .heroText,
+  .heroTextL2 {
+    font-size: 1rem;
+  }
+
+  .circle {
+    width: 200px;
+    height: 200px;
+  }
+
+  .square {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroHeader {
+    font-size: 1.5rem;
+  }
+
+  .heroText,
+  .heroTextL2 {
+    font-size: 0.9rem;
+  }
+
+  .circle {
+    width: 150px;
+    height: 150px;
+  }
+
+  .square {
+    width: 100px;
+    height: 100px;
   }
 }
