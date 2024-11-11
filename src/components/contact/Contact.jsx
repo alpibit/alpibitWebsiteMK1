@@ -4,12 +4,17 @@ import { config } from "../../config.js";
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Loader2 } from "lucide-react";
 
 const Contact = () => {
-  const [message, setMessage] = useState(""); // To display messages to the user
+  const [message, setMessage] = useState("");
+  const [status, setStatus] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const formHandler = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
+    setStatus("loading");
 
     const formData = new FormData(event.target);
 
@@ -20,72 +25,96 @@ const Contact = () => {
       });
 
       const result = await response.text();
-
-      setMessage(result); // Display the result message from the server
+      setMessage(result);
+      setStatus("success");
+      event.target.reset();
     } catch (error) {
       setMessage("Error occurred while submitting the form. Please try again.");
+      setStatus("error");
     }
+
+    setIsLoading(false);
   };
 
   return (
     <section className={styles.wrap} id="contact">
       <div className={styles.contactDetails}>
-        <p className={styles.contactUnit}>
-          <a href={`mailto:${config.EMAIL}`} className={styles.contactLink}>
-            <FontAwesomeIcon icon={faEnvelope} /> alpibit@hotmail.com
-          </a>
-        </p>
-        <p className={styles.contactUnit}>
-          <a href={`tel:${config.PHONE}`} className={styles.contactLink}>
-            <FontAwesomeIcon icon={faPhone} /> {config.PHONE}
-          </a>
-        </p>
-        <p className={styles.contactUnit}>
-          <a
-            target="_blank"
-            href={config.GITHUB}
-            className={styles.contactLink}
-          >
-            <FontAwesomeIcon icon={faGithub} />
-            GitHub
-          </a>
-        </p>
+        <a href={`mailto:${config.EMAIL}`} className={styles.contactLink}>
+          <FontAwesomeIcon icon={faEnvelope} />
+          <span>alpibit@hotmail.com</span>
+        </a>
+        <a href={`tel:${config.PHONE}`} className={styles.contactLink}>
+          <FontAwesomeIcon icon={faPhone} />
+          <span>{config.PHONE}</span>
+        </a>
+        <a
+          target="_blank"
+          href={config.GITHUB}
+          className={styles.contactLink}
+        >
+          <FontAwesomeIcon icon={faGithub} />
+          <span>GitHub</span>
+        </a>
       </div>
-      <div className={styles.contactFormWrap}>
+
+      <div className={styles.formWrapper}>
+        <h1 className={styles.formTitle}>Get in Touch</h1>
         <form
           name="contactform"
           method="post"
           onSubmit={formHandler}
           className={styles.contactForm}
         >
-          <h1 className={styles.contactheader}>Contact form</h1>
-          <input
-            type="text"
-            name="name"
-            placeholder="Your Name *"
-            className={styles.contactFormName}
-            required
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Your Email *"
-            className={styles.contactFormEmail}
-            required
-          />
-          <textarea
-            name="message"
-            placeholder="Message"
-            required
-            className={styles.contactFormMessage}
-          ></textarea>
-          <input
+          <div className={styles.inputGroup}>
+            <input
+              type="text"
+              name="name"
+              placeholder=" "
+              required
+              className={styles.formInput}
+            />
+            <label className={styles.formLabel}>Your Name</label>
+          </div>
+
+          <div className={styles.inputGroup}>
+            <input
+              type="email"
+              name="email"
+              placeholder=" "
+              required
+              className={styles.formInput}
+            />
+            <label className={styles.formLabel}>Your Email</label>
+          </div>
+
+          <div className={styles.inputGroup}>
+            <textarea
+              name="message"
+              placeholder=" "
+              required
+              className={`${styles.formInput} ${styles.formTextarea}`}
+            ></textarea>
+            <label className={styles.formLabel}>Message</label>
+          </div>
+
+          <button
             type="submit"
-            value="Submit"
-            className={styles.contactFormSubmit}
-          />
+            className={styles.submitButton}
+            disabled={isLoading}
+          >
+            {isLoading ? (
+              <Loader2 className={styles.spinner} />
+            ) : (
+              "Send Message"
+            )}
+          </button>
+
+          {message && (
+            <div className={`${styles.messageBox} ${styles[status]}`}>
+              {message}
+            </div>
+          )}
         </form>
-        {message && <p>{message}</p>}
       </div>
     </section>
   );

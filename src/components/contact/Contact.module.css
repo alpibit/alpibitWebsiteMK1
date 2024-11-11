@@ -1,95 +1,208 @@
 .wrap {
-  height: 100vh;
-  min-height: 700px;
-  background-color: #f0ffff;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f0ffff 0%, #e6f7f7 100%);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 4rem 2rem;
 }
 
 .contactDetails {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 100px;
-}
-
-.contactUnit {
-  margin: 20px;
+  gap: 2rem;
+  margin-bottom: 3rem;
 }
 
 .contactLink {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   text-decoration: none;
   color: #3a4443;
-  font-size: 25px;
+  font-size: 1.1rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 
-/* CONTACT FORM */
+.contactLink * {
+  cursor: pointer;
+}
 
-.contactheader {
-  margin-bottom: 40px;
-  font-size: 50px;
+.contactLink:hover {
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.formWrapper {
+  width: 100%;
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 2.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.formTitle {
+  font-size: 2rem;
   color: #3a4443;
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
 .contactForm {
-  width: 60vw;
-  max-width: 800px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  gap: 1.5rem;
 }
 
-.contactFormName,
-.contactFormEmail,
-.contactFormMessage {
+.inputGroup {
+  position: relative;
+}
+
+.formInput {
   width: 100%;
-  padding: 12px;
-  margin: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 1rem;
+  border: 2px solid rgba(58, 68, 67, 0.1);
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.formTextarea {
+  min-height: 150px;
   resize: vertical;
+}
+
+.formLabel {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  padding: 0 0.5rem;
+  color: #666;
   cursor: text;
+  transition: all 0.3s ease;
+  background: transparent;
 }
 
-.contactFormSubmit {
-  background-color: #3a4443;
+.formInput:focus,
+.formInput:not(:placeholder-shown) {
+  border-color: #b15e00;
+  outline: none;
+}
+
+.formInput:focus+.formLabel,
+.formInput:not(:placeholder-shown)+.formLabel {
+  transform: translateY(-1.4rem) scale(0.8);
+  background: white;
+  color: #b15e00;
+}
+
+.submitButton {
+  background: #b15e00;
   color: white;
-  padding: 12px 20px;
   border: none;
-  border-radius: 4px;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
   cursor: pointer;
-  margin-top: 30px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
+.submitButton:hover:not(:disabled) {
+  background: #934d00;
+  transform: translateY(-2px);
+}
 
-@media only screen and (max-width: 768px) {
-  .contactForm {
-    width: 80vw;
+.submitButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+.messageBox {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  animation: slideIn 0.3s ease;
+}
+
+.messageBox.success {
+  background: #d4edda;
+  color: #155724;
+}
+
+.messageBox.error {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.messageBox.loading {
+  background: #fff3cd;
+  color: #856404;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
   }
 
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
   .contactDetails {
-    padding-bottom: 10px;
     flex-direction: column;
-    font-size: 15px;
+    gap: 1rem;
+  }
+
+  .formWrapper {
+    padding: 1.5rem;
+  }
+
+  .formTitle {
+    font-size: 1.5rem;
   }
 
   .contactLink {
-    font-size: 20px;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+}
 
+@media (max-width: 480px) {
+  .wrap {
+    padding: 2rem 1rem;
   }
 
-  .contactheader {
-    padding-bottom: 20px;
-    font-size: 20px;
-    color: #3a4443;
-  }
-
-  .contactFormSubmit {
-    margin-top: 15px;
+  .formWrapper {
+    padding: 1rem;
   }
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Skills.module.css";
 import {
   faHtml5,
@@ -10,67 +10,117 @@ import {
   faWordpress,
   faShopify,
   faCodepen,
-  // laravel icon import
   faLaravel
 } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import JQueryIcon from "../svg/jqueryIcon";
 import WooIcon from "../svg/wooIcon";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+const SkillCard = ({ icon, title, description }) => {
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  const handleClick = () => {
+    if (window.innerWidth <= 800) {
+      setIsFlipped(!isFlipped);
+    }
+  };
+
+  return (
+    <div className={styles.skills} onClick={handleClick}>
+      <div className={`${styles.cardInner} ${isFlipped ? styles.flipped : ''}`}>
+        <div className={styles.cardFront}>
+          <div className={styles.icon}>
+            {React.isValidElement(icon) ? icon : <FontAwesomeIcon icon={icon} size="2x" />}
+          </div>
+          <h1>{title}</h1>
+        </div>
+        <div className={styles.cardBack}>
+          <div className={styles.icon}>
+            {React.isValidElement(icon) ? icon : <FontAwesomeIcon icon={icon} size="2x" />}
+          </div>
+          <p className={styles.description}>{description}</p>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const Skills = () => {
+  const skills = [
+    {
+      icon: faHtml5,
+      title: "HTML5",
+      description: "Semantic markup"
+    },
+    {
+      icon: faCss3,
+      title: "CSS/SASS",
+      description: "Modern styling"
+    },
+    {
+      icon: faJs,
+      title: "JavaScript",
+      description: "ES6+ features"
+    },
+    {
+      icon: <JQueryIcon />,
+      title: "jQuery",
+      description: "DOM manipulation"
+    },
+    {
+      icon: faReact,
+      title: "ReactJS",
+      description: "Modern React"
+    },
+    {
+      icon: faPhp,
+      title: "PHP",
+      description: "Backend dev"
+    },
+    {
+      icon: faWordpress,
+      title: "WordPress",
+      description: "CMS development"
+    },
+    {
+      icon: <WooIcon />,
+      title: "WooCommerce",
+      description: "E-commerce"
+    },
+    {
+      icon: faShopify,
+      title: "Shopify",
+      description: "Store development"
+    },
+    {
+      icon: faGithub,
+      title: "Git&GitHub",
+      description: "Version control"
+    },
+    {
+      icon: faLaravel,
+      title: "Laravel",
+      description: "PHP framework"
+    },
+    {
+      icon: faCodepen,
+      title: "API Integration",
+      description: "Data handling"
+    }
+  ];
+
   return (
     <section className={styles.wrap} id="skills">
       <h1 className={styles.header}>Digital Toolbox</h1>
       <div className={styles.skillWrap}>
-        <div className={styles.skills}>
-          <FontAwesomeIcon icon={faHtml5} size="2x" />
-          <h1>HTML5</h1>
-        </div>
-        <div className={styles.skills}>
-          <FontAwesomeIcon icon={faCss3} size="2x" />
-          <h1>CSS/SASS</h1>
-        </div>
-        <div className={styles.skills}>
-          <FontAwesomeIcon icon={faJs} size="2x" />
-          <h1>JavaScript</h1>
-        </div>
-        <div className={styles.skills}>
-          <JQueryIcon />
-          <h1>jQuery</h1>
-        </div>
-        <div className={styles.skills}>
-          <FontAwesomeIcon icon={faReact} size="2x" />
-          <h1>ReactJS</h1>
-        </div>
-        <div className={styles.skills}>
-          <FontAwesomeIcon icon={faGithub} size="2x" />
-          <h1>Git&GitHub</h1>
-        </div>
-        <div className={styles.skills}>
-          <FontAwesomeIcon icon={faPhp} size="2x" />
-          <h1>PHP</h1>
-        </div>
-        <div className={styles.skills}>
-          <FontAwesomeIcon icon={faWordpress} size="2x" />
-          <h1>WordPress</h1>
-        </div>
-        <div className={styles.skills}>
-          <WooIcon />
-          <h1>WooCommerce</h1>
-        </div>
-        <div className={styles.skills}>
-          <FontAwesomeIcon icon={faShopify} size="2x" />
-          <h1>Shopify</h1>
-        </div>
-        <div className={styles.skills}>
-          <FontAwesomeIcon icon={faLaravel} size="2x" />
-          <h1>Laravel</h1>
-        </div>
-        <div className={styles.skills}>
-          <FontAwesomeIcon icon={faCodepen} size="2x" />
-          <h1>API Integration</h1>
-        </div>
-
+        {skills.map((skill, index) => (
+          <SkillCard
+            key={index}
+            icon={skill.icon}
+            title={skill.title}
+            description={skill.description}
+          />
+        ))}
       </div>
     </section>
   );
