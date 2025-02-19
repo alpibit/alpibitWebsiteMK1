@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Skills.module.css";
 import {
   faHtml5,
@@ -15,9 +15,35 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import JQueryIcon from "../svg/jqueryIcon";
 import WooIcon from "../svg/wooIcon";
+import { initWasm, interpolateColor } from "../../wasm/init";
 
 const SkillCard = ({ icon, title, description }) => {
   const [isFlipped, setIsFlipped] = useState(false);
+  const [iconColor, setIconColor] = useState("#3A4443");
+  const [isHovering, setIsHovering] = useState(false);
+
+  useEffect(() => {
+    let animationFrame;
+    let startTime;
+
+    const animate = (currentTime) => {
+      if (!startTime) startTime = currentTime;
+      const progress = Math.min((currentTime - startTime) / 300, 1);
+
+      const newColor = isHovering
+        ? interpolateColor("#3A4443", "#b15e00", progress)
+        : interpolateColor("#b15e00", "#3A4443", progress);
+
+      setIconColor(newColor);
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate);
+      }
+    };
+
+    animationFrame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationFrame);
+  }, [isHovering]);
 
   const handleClick = () => {
     if (window.innerWidth <= 800) {
@@ -26,16 +52,21 @@ const SkillCard = ({ icon, title, description }) => {
   };
 
   return (
-    <div className={styles.skills} onClick={handleClick}>
+    <div
+      className={styles.skills}
+      onClick={handleClick}
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
+    >
       <div className={`${styles.cardInner} ${isFlipped ? styles.flipped : ''}`}>
         <div className={styles.cardFront}>
-          <div className={styles.icon}>
+          <div className={styles.icon} style={{ color: iconColor }}>
             {React.isValidElement(icon) ? icon : <FontAwesomeIcon icon={icon} size="2x" />}
           </div>
           <h1>{title}</h1>
         </div>
         <div className={styles.cardBack}>
-          <div className={styles.icon}>
+          <div className={styles.icon} style={{ color: iconColor }}>
             {React.isValidElement(icon) ? icon : <FontAwesomeIcon icon={icon} size="2x" />}
           </div>
           <p className={styles.description}>{description}</p>
@@ -46,6 +77,10 @@ const SkillCard = ({ icon, title, description }) => {
 };
 
 const Skills = () => {
+  useEffect(() => {
+    initWasm();
+  }, []);
+
   const skills = [
     {
       icon: faHtml5,
